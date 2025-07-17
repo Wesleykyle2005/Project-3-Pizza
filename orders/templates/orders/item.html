@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Add Item{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'add_to_cart' %}" method="post" style="display: inline">
+  {% csrf_token %}
+  <input name="item_id" value="{{ item.id }}" type="hidden">
+
+  <table id="cart-table" class="mytable">
+    <tr class="header">
+      <th>Product</th>
+      {% if item.size %}
+        <th>Size</th>
+      {% endif %}
+      <th>Price</th>
+      <th>Buy</th>
+    </tr>
+    <tr>
+      <td>{{ item.product.name }}</td>
+      {% if item.size %}
+        <td>{{ item.size }}</td>
+      {% endif %}
+      <td>{{ item.price }}</td>
+      <td rowspan="1">
+        <button type="submit" class="cart-btn">&#x1f6d2;</button>
+      </td>
+    </tr>
+    {% if extras_category_kind == "components" and extras_amount %}
+      <tr>
+        <th>{{ extras_category_name }}</th>
+        <td colspan="3">
+          {% for num in extras_amount %}
+            <select name="extras" class="nav_tables">
+              {% for extra in extras %}
+                <option value="{{ extra.id }}">{{ extra.product.name }}</option>
+              {% endfor %}
+            </select>
+          {% endfor %}
+        </td>
+      </tr>
+    {% endif %}
+    {% if extras_category_kind == "additions" and extras_amount is None %}
+      <tr>
+        <th>{{ extras_category_name }}</th>
+        <td colspan="3">
+          {% for extra in extras %}
+            <input type="checkbox" name="extras" value="{{ extra.id }}" class="nav_tables">Add {{ extra.product.name }} for {{ extra.price }}$<br>
+          {% endfor %}
+        </td>
+      </tr>
+    {% endif %}
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,60 @@
+# Proyecto 3: Pizza
+
+## Objetivos
+
+- Familiarizarse más con Django.
+- Ganar experiencia en el diseño de bases de datos relacionales.
+
+## Descripción general
+
+En este proyecto, construirás una aplicación web para gestionar los pedidos en línea de un restaurante de pizza. Los usuarios podrán explorar el menú del restaurante, agregar productos a su carrito y enviar sus pedidos. Mientras tanto, los dueños del restaurante podrán agregar y actualizar los elementos del menú, así como ver los pedidos que se han realizado.
+
+## Hitos
+
+Recomendamos que intentes cumplir los siguientes hitos en orden:
+
+- Completa los pasos de Menú, Agregar Productos y Registro/Inicio de sesión/Cierre de sesión.
+- Completa los pasos de Carrito de Compras y Realizar un Pedido.
+- Completa los pasos de Visualización de Pedidos y Toque Personal.
+
+## Primeros pasos
+
+### Python y Django
+
+Al igual que en los Proyectos 1 y 2, asegúrate de tener una copia de [Python 3.6](https://www.python.org/downloads/) o superior instalada en tu máquina.  
+También necesitarás instalar `pip`. Si descargaste Python desde su sitio web, probablemente ya tienes `pip` instalado (puedes comprobarlo ejecutando `pip` en una terminal). Si no lo tienes, asegúrate de [instalarlo](https://pip.pypa.io/en/stable/installing/) antes de continuar.
+
+Para ejecutar esta aplicación de Django:
+
+1. Descarga el código de distribución `project3` desde https://cdn.cs50.net/web/2019/x/projects/3/project3.zip y descomprímelo.
+2. En una ventana de terminal, navega hasta tu directorio `project3`. Ten en cuenta que este es el directorio de un proyecto Django llamado `pizza`, dentro del cual ya hay una app creada llamada `orders`.
+3. Ejecuta `pip3 install -r requirements.txt` en tu terminal para asegurarte de que todos los paquetes de Python necesarios (Django, en este caso) estén instalados.
+4. Ejecuta `python manage.py runserver` para iniciar tu aplicación Django.
+5. Si navegas a la URL proporcionada por Django, ¡deberías ver el texto `"Project 3: TODO"`!
+
+## Requisitos
+
+¡Es hora de construir tu aplicación web! Aquí están los requisitos:
+
+- **Menú**: Tu aplicación web debe soportar todos los elementos disponibles en el menú de [Pinnochio’s Pizza & Subs](http://www.pinocchiospizza.net/menu.html) (una pizzería popular en Cambridge). Dependerá de ti, analizando el menú y los distintos tipos de productos (pequeño vs. grande, ingredientes, añadidos, etc.), decidir cómo construir tus modelos para representar mejor la información. Agrega tus modelos a `orders/models.py`, crea los archivos de migración necesarios y aplícalos.
+- **Agregar Productos**: Usando el panel de administración de Django, los administradores del sitio (dueños del restaurante) deben poder agregar, actualizar y eliminar productos del menú. Agrega todos los productos del menú de Pinnochio a tu base de datos usando la interfaz de administración o ejecutando comandos de Python en el shell de Django.
+- **Registro, Inicio y Cierre de Sesión**: Los usuarios del sitio (clientes) deben poder registrarse en tu aplicación web con un nombre de usuario, contraseña, nombre, apellido y correo electrónico. Luego, los clientes deben poder iniciar y cerrar sesión en tu sitio web.
+- **Carrito de Compras**: Una vez iniciada la sesión, los usuarios deben ver una representación del menú del restaurante, donde pueden agregar productos (junto con ingredientes o extras, si corresponde) a su “carrito de compras” virtual. El contenido del carrito debe guardarse incluso si el usuario cierra la ventana o cierra y vuelve a iniciar sesión.
+- **Realizar un Pedido**: Una vez que haya al menos un producto en el carrito de un usuario, este debe poder realizar un pedido, donde se le pedirá confirmar los productos en el carrito y el total (¡no es necesario preocuparse por los impuestos!) antes de realizar el pedido.
+- **Visualización de Pedidos**: Los administradores del sitio deben tener acceso a una página donde puedan ver los pedidos que ya se han realizado.
+- **Toque Personal**: Agrega al menos una funcionalidad adicional de tu elección a la aplicación web. Algunas posibilidades incluyen: permitir a los administradores marcar pedidos como completados y permitir a los usuarios ver el estado de sus pedidos pendientes o completados, integrar la API de [Stripe](https://stripe.com/docs) para permitir a los usuarios pagar con tarjeta de crédito durante el proceso de compra, o enviar un correo de confirmación a los usuarios una vez que su compra esté completa. Si necesitas usar credenciales (como contraseñas o claves de API) para tu toque personal, ¡asegúrate de no almacenarlas en tu código fuente, es mejor usar variables de entorno!
+- En `README.md`, incluye una breve descripción de tu proyecto, lo que contiene cada archivo que creaste o modificaste y (opcionalmente) cualquier otra información adicional que el staff deba saber sobre tu proyecto. También incluye una descripción de tu toque personal y lo que decidiste agregar al proyecto.
+- Si has agregado algún paquete de Python que deba instalarse para ejecutar tu aplicación web, ¡asegúrate de agregarlo a `requirements.txt`!
+
+Más allá de estos requisitos, el diseño, la apariencia y la experiencia del sitio web dependen de ti. ¡También puedes agregar características adicionales a tu sitio web, siempre y cuando cumplas con los requisitos especificados arriba!
+
+## Consejos
+
+- A diferencia del Proyecto 1, no deberías necesitar construir todo el sistema de autenticación e inicio de sesión de tu aplicación. Siéntete libre de usar el sistema de usuarios y autenticación incorporado de Django para simplificar el proceso de inicio y cierre de sesión de los usuarios.
+- Antes de lanzarte a escribir tus modelos, probablemente querrás pensar cuidadosamente sobre los diferentes tipos de productos del menú y cómo organizarlos mejor. Algunas preguntas a considerar incluyen: ¿cómo deberías representar los diferentes precios para versiones grandes y pequeñas del mismo plato? ¿Dónde encajan los ingredientes en tu modelo para las pizzas y cómo calculas el precio final de una pizza? ¿Cómo harás que funcionen los añadidos personalizados para los subs?
+
+## Preguntas frecuentes
+
+### ¿Qué es una pizza “Especial”?
+
+Depende de ti decidir qué significa una pizza “Especial” y cómo implementarla. ¡Podría ser un conjunto particular de ingredientes, permitir hasta 5 tipos diferentes de ingredientes, o cualquier otra cosa que decidas!

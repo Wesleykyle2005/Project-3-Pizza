@@ -1,0 +1,294 @@
+    
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #cccccc;
+  --blue: #0067C6;
+  --font-table: 'Segoe UI', Arial, Helvetica, sans-serif;
+  --font-nav: 'Montserrat', Arial, Helvetica, sans-serif;
+  --font-h1: 'Oswald', Arial, Helvetica, sans-serif;
+  --font-h2: 'Roboto Slab', Arial, Helvetica, sans-serif;
+}
+
+/* Fuente para todos los elementos de tabla: th, tr, td, precios y nombres */
+.mytable,
+.mytable th,
+.mytable tr,
+.mytable td {
+  font-family: var(--font-table);
+}
+
+.mytable {
+  border-collapse: collapse;
+  width: 100%;
+}
+.mytable tr {
+  font-size: 22px;
+  text-align: center;
+}
+.mytable th {
+  font-size: 22px;
+  font-weight: normal;
+}
+.mytable tr.header{
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black);
+  background-color: var(--white);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.mytable tr.total {
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 5px solid var(--white);
+  color: var(--white);
+  background-color: var(--black);
+}
+.mytable td {
+  position: relative;
+  padding-bottom: 0px;
+}
+.mytable td::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  bottom: 0;
+  height: 1px;
+  background: var(--black);
+  border-radius: 1px;
+}
+
+#header-bandera,
+.bandera-left,
+.bandera-right,
+.bandera-center,
+.bandera-center h3,
+.nav_tables,
+.nav-main,
+.nav-main button,
+#cart-table {
+  font-family: var(--font-nav);
+}
+
+#cart-table {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: var(--white);
+  text-align: left;
+  border-collapse: collapse;
+}
+#cart-table th, #cart-table td {
+  font-family: var(--font-table);
+  font-size: 22px;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 10px 8px;
+  border: none;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+#cart-table tr.header th {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--black);
+  background-color: var(--white);
+  text-align: center;
+  text-transform: capitalize;
+}
+#cart-table td::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  bottom: 0;
+  height: 1px;
+  background: var(--black);
+  border-radius: 1px;
+}
+#cart-table tr:last-child td::after {
+  display: none;
+}
+#cart-table th::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1%;
+  right: 1%;
+  bottom: 0;
+  height: 1px;
+  background: var(--black);
+  border-radius: 1px;
+}
+#cart-table tr:last-child th::after {
+  display: none;
+}
+#cart-table tr:not(:last-child) th, #cart-table tr:not(:last-child) td {
+  border-bottom: 1.5px solid var(--gray);
+}
+#cart-table tr.header th {
+  font-size: 20px;
+  font-weight: normal;
+  background-color: var(--white);
+  color: var(--black);
+  text-align: left;
+  text-transform: capitalize;
+}
+
+#header-bandera {
+  width: calc(100%); 
+  height: 20vh;
+  display: flex;
+  box-sizing: border-box;
+  border: 2px solid var(--black);
+  margin-top: 10px;
+}
+.bandera-left, .bandera-right {
+  width: 33.33%;
+  height: 100%;
+  background: var(--blue);
+}
+.bandera-center {
+  width: 33.33%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bandera-center h3 {
+  margin: 0;
+  width: 100%;
+  text-align: right;
+  font-size: 1.1em;
+  color: var(--black);
+}
+.nav-buttons {
+  margin-top: 5px;
+}
+#main {
+  margin-top: 100px;
+  background-color: #0067C6;
+  border-bottom: 2px solid var(--black);
+  border-left: none;
+  border-right: none;
+}
+
+#content{
+  width: 50dvw;
+  border: 4px solid var(--black);
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--white);
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--white);
+}
+
+.menu {
+  padding: 15px;
+  text-align: center;
+  background-color: var(--gray);
+  font-family: var(--font-nav);
+}
+button {
+  margin: 5px 10px;
+  background-color: var(--gray);
+  color: var(--blue);
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: var(--font-nav);
+}
+
+.nav_tables{
+  background-color: var(--gray);
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+a:visited{
+  color: var(--blue);
+}
+
+.nav-main {
+  margin: 0px;
+  background: var(--white);
+  border-bottom: 2px solid var(--black);
+  justify-content: center;
+}
+.nav-main button {
+  margin: 0 8px;
+  background-color: var(--gray);
+  color: var(--blue);
+  border: 2px solid var(--black);
+  border-bottom: 0;
+  padding: 10px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-main button.active {
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: bold;
+  position: relative;
+  top: 2px;
+  z-index: 2;
+}
+.nav-main button:hover:not(.active) {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+h1 {
+  text-align: center;
+  font-family: var(--font-h1);
+  font-size: 2.5em;
+  letter-spacing: 2px;
+}
+
+h2 {
+  text-align: center;
+  font-family: var(--font-h2);
+  font-size: 1.25Wem;
+  letter-spacing: 1px;
+}
+
+.cart-btn {
+  font-size: 22px;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.cart-action-btn {
+  font-size: 22px;
+  background: var(--gray);
+  border: 2px solid var(--black);
+  border-radius: 0;
+  padding: 4px 14px;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+}
+.cart-action-btn:hover {
+  background: var(--black);
+  color: var(--blue);
+}

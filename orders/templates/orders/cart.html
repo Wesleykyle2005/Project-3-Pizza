@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Your cart{% endblock %}
+
+{% block content %}
+
+  <h2>Your cart</h2>
+  <table class="mytable">
+    <tr class="header"><th>product</th><th>category</th><th>size</th><th>price</th></tr>
+    {% for selection in selections %}
+      {% cycle 'odd' 'even' as selection_class silent %}
+      {% for item in selection.items.all %}
+        <tr class="{{ selection_class }}
+            {% if item.product.category.kind == 'primary' %}
+              primary
+            {% else %}
+              non-primary
+            {% endif %}">
+          <td>{{item.product}}</td>
+          <td>{{item.product.category}}</td>
+          <td>{% if item.size %}{{item.size}}{% endif %}</td>
+          <td>{% if item.price is not None %}{{item.price}}{% endif %}</td>
+        </tr>
+      {% endfor %}
+      {% if forloop.last %}
+      <tr class="total">
+        <td colspan="3">TOTAL</td>
+        <td>{{ total_sum }}</td>
+      </tr>
+      {% endif %}
+    {% empty %}
+      <tr><td colspan="4">Your cart is empty</td></tr>
+    {% endfor %}
+  </table>
+
+  {% if selections %}
+  <form action="" method="post" style="text-align:center;">
+    {% csrf_token %}
+    <button type="submit" name="order_status" value="confirm" class="cart-action-btn" style="margin-right:10px;">&#x1f6d2;</button>
+    <button type="submit" name="order_status" value="cancel" class="cart-action-btn">&#x274C;</button>
+    <br><br>
+  </form>
+  {% endif %}
+
+{% endblock %}

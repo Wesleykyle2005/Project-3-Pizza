@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+
+<h1>Our menu</h1>
+
+
+
+  {% for cat, products, has_size in data %}
+    {% if cat.kind == "primary" %}
+
+{# Navegación de categorías #}
+<nav class="nav_tables" style="margin-bottom: 2em;">
+  {% for cat, products, has_size in data %}
+    {% if cat.kind == "primary" or cat.kind == "components" %}
+      <a href="#cat-{{ cat.name|slugify }}" style="margin-right: 1em;">{{ cat.name }}</a>|
+    {% endif %}
+  {% endfor %}
+</nav>
+
+      <h2 id="cat-{{ cat.name|slugify }}">{{ cat.name }}</h2>
+      <table class="mytable">
+        <tr class="header">
+          <th> </th>
+          {% if has_size %}
+            <th>Small</th>
+            <th>Large</th>
+          {% else %}
+            <th>Price</th>
+            <th>Buy</th>
+          {% endif %}
+        </tr>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.name }}</td>
+          {% if has_size %}
+            <td>
+              {% for item in p.menu_items.all %}
+                {% if item.size == "small" %}
+                  {{ item.price }}
+                  <form action="{% url 'item' item.id %}" method="get" style="display:inline;">
+                    <button type="submit" class="cart-btn">&#x1f6d2;</button>
+                  </form>
+                {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              {% for item in p.menu_items.all %}
+                {% if item.size == "large" %}
+                  {{ item.price }}
+                  <form action="{% url 'item' item.id %}" method="get" style="display:inline;">
+                    <button type="submit" class="cart-btn">&#x1f6d2;</button>
+                  </form>
+                {% endif %}
+              {% endfor %}
+            </td>
+          {% else %}
+            <td>
+              {% for item in p.menu_items.all %}
+                {{ item.price }}
+              {% endfor %}
+            </td>
+            <td>
+              {% for item in p.menu_items.all %}
+                <form action="{% url 'item' item.id %}" method="get" style="display:inline;">
+                  <button type="submit" class="cart-btn">&#x1f6d2;</button>
+                </form>
+              {% endfor %}
+            </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}
