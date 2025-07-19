@@ -12,7 +12,10 @@
     <div class="bandera-left"></div>
     <div class="bandera-center">
       <h2>Project 3 -Menu</h2>
+      {% if request.user.is_authenticated %}
       <h3>Hello, {{ request.user.username }}!</h3>
+
+      {% endif %}
     </div>
     <div class="bandera-right"></div>
   </div>
